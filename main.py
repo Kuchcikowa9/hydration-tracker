@@ -38,16 +38,20 @@ def get_today_total(data):
             total += entry["amount_ml"]
     return total
 
-# Example usage
-add_water(250)
-data = load_data()
-today_total = get_today_total(data)
+def show_today_summary():
+    # Load data from the JSON file
+    data = load_data()  
+    
+    # Get the total water intake for today
+    today_total = get_today_total(data)  
+    
+    # Display a message based on the total water intake
+    if today_total == 0:
+        print("You haven't logged any water today 😟 Don't forget to hydrate!")
+    elif today_total < 1000:
+        print(f"You've had {today_total} ml today 💧 Keep going!")
+    elif today_total < 2000:
+        print(f"You've had {today_total} ml today 💪 Nice job — you're getting there!")
+    else:
+        print(f"You've had {today_total} ml today 🥳 Great work, you're well hydrated!")
 
-if today_total == 0:
-    print("You haven't logged any water today 😟 Don't forget to hydrate!")
-elif today_total < 1000:
-    print(f"You've had {today_total} ml today 💧 Keep going!")
-elif today_total < 2000:
-    print(f"You've had {today_total} ml today 💪 Nice job — you're getting there!")
-else:
-    print(f"You've had {today_total} ml today 🥳 Great work, you're well hydrated!")
