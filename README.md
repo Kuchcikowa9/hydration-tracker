@@ -22,7 +22,7 @@ A simple Python project to track daily water intake.
 - [x] Set up Git and GitHub repo
 - [x] Create main Python file and basic water logging function
 - [x] Add initial README with project description
-- [ ] Create function to show today’s total water intake
+- [x] Create function to show today’s total water intake
 - [ ] Build monthly statistics summary
 - [ ] Add simple terminal interface (menu)
 - [ ] Add a GUI with Tkinter (or another library)
