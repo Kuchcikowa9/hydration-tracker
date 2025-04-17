@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from collections import defaultdict
 
 def add_water(amount_ml):
     # Get current date and time
@@ -60,28 +61,57 @@ def show_today_summary():
     else:
         print(f"You've had {today_total} ml today 🥳 Great work, you're well hydrated!")
 
+    from collections import defaultdict
+
+def get_monthly_summary(data):
+    today = datetime.now()
+    current_month = today.strftime("%Y-%m")
+    summary = defaultdict(int)
+
+    for entry in data:
+        entry_date = entry["date"]
+        if entry_date.startswith(current_month):
+            summary[entry_date] += entry["amount_ml"]
+
+    return dict(summary)
+
+def show_monthly_summary():
+    data = load_data()
+    monthly = get_monthly_summary(data)
+
+    if not monthly:
+        print("No data for this month yet.")
+        return
+
+    print("\n💧 Monthly Water Intake Summary:\n")
+    for date in sorted(monthly):
+        print(f"{date} — {monthly[date]} ml")
+    print()
+
+
 def menu():
     while True:
-        # Display menu options
         print("\n--- Hydration Tracker ---")
         print("1. Add water")
         print("2. Show today's summary")
-        print("3. Exit")
+        print("3. Show monthly summary")  # NEW
+        print("4. Exit")
         
-        # Get user input for the menu option
         choice = input("Choose an option: ")
 
-        # Execute the corresponding option
         if choice == "1":
             amount_ml = int(input("How much water did you drink (in ml)? "))
             add_water(amount_ml)
         elif choice == "2":
             show_today_summary()
         elif choice == "3":
+            show_monthly_summary()  # NEW
+        elif choice == "4":
             print("Goodbye! Stay hydrated! 💧")
             break
         else:
             print("Invalid option, please choose again.")
+
 
 # Start the menu
 menu()
