@@ -17,12 +17,6 @@ A simple Python project to track daily water intake.
 - VS Code
 - Git / GitHub
 
-## How to run
-
-```bash
-python3 main.py
-
-
 ## TODO
 
 - [x] Set up Git and GitHub repo
@@ -36,3 +30,11 @@ python3 main.py
 - [ ] Export hydration data to CSV
 - [ ] Write basic tests for core functions
 - [ ] Polish README and documentation
+
+## How to run
+
+```bash
+python3 main.py
+
+
+
